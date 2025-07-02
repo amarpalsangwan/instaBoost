@@ -43,7 +43,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const fetchUser = async () => {
     try {
-      const response = await axios.get('http://localhost:5200/api/auth/user');
+      const response = await axios.get('https://instaboost-txat.onrender.com/api/auth/user');
       setUser(response.data);
     } catch (error) {
       localStorage.removeItem('token');
@@ -55,7 +55,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = async (email: string, password: string) => {
     try {
-      const response = await axios.post('http://localhost:5200/api/auth/login', {
+      const response = await axios.post('https://instaboost-txat.onrender.com/api/auth/login', {
         email,
         password,
       });
@@ -71,7 +71,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const register = async (userData: any) => {
     try {
-      const response = await axios.post('http://localhost:5200/api/auth/register', userData);
+      const response = await axios.post('https://instaboost-txat.onrender.com/api/auth/register', userData);
       const { token, user } = response.data;
       localStorage.setItem('token', token);
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
